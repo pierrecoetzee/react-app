@@ -1,0 +1,24 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title ReactApp
+    = csrf_meta_tags
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'application', defer: true
+  %body
+    %div#container
+      %nav.navbar.navbar-dark.bg-inverse
+        = link_to "Movie Reviews", root_path, class: "navbar-brand"
+        %ul.nav.navbar-nav
+          %li.nav-item.active
+            %a.nav-link{:href => "movies/new"}
+              New Movie
+              %span.sr-only (current)
+          %li.nav-item
+            %a.nav-link{:href => "#"} About
+        %form.form-inline.pull-xs-right
+          %input.form-control{:placeholder => "Search", :type => "text"}/
+          %button.btn.btn-success-outline{:type => "submit"} Search
+
+      = yield
